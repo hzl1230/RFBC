@@ -46,7 +46,7 @@ class Poisson {
     /* Driver to Poisson's solve function */
     void solve(const class ScalarField*, class ScalarField*);
 
-    void showinstantphi(Real& phi);
+    void showinstantphi();
 
   private:
     const class Mesh& mesh;

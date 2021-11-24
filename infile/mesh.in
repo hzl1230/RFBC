@@ -1,5 +1,5 @@
-domain    0 100 0 2 0 1 
-num_cells 100 2 1
+domain    0 10 0 2 0 1 
+num_cells 10 2 1
 tile      4 1 1 
 field_bc type  d d p p p p & 
          value 0 0 0 0 0 0
@@ -9,6 +9,6 @@ conductor rectangle type real &
  potential fixed 100. &
  is_rf  true
 conductor rectangle type real &
- position 99.999 102 0. 2. 0. 0. &
+ position 9.9999 10.2 0. 2. 0. 0. &
  potential fixed 0. &
  is_rf false

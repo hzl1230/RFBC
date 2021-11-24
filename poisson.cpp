@@ -58,7 +58,7 @@ void Poisson::solve(const ScalarField* r, ScalarField* x)
   return ( (this->*ptrsolve)(r, x) );
 }
 
-void Poisson::showinstantphi(Real& phi)
+void Poisson::showinstantphi()
 {
   ScalarField* sf = new ScalarField(mesh);
   set_rhs_lin(*sf);
@@ -267,7 +267,7 @@ void Poisson::check_objects_2d(std::vector<bool>& is_fixed)
         phi = conductor->get_potential();
         rf = conductor->is_rf();
         bc_id_val[0].push_back(std::make_pair(nid, phi));
-        if (rf) is_rf[nid] = true;
+        if(rf) is_rf[nid] = true;
       }
     }
   }   // for (Index iy = 0; iy < ny; ++iy)
@@ -303,11 +303,14 @@ void Poisson::set_rhs_lin(const ScalarField& r)
 
   // Dirichlet BC
   for (auto it = bc_id_val[0].cbegin(); it != bc_id_val[0].cend(); ++it) {
-    if (is_rf[it->first]) 
+    if (is_rf[it->first]) {
       b(it->first) = (it->second) * cos(omegaT);
-
-    else 
+      std::cout << "RF bc" << std::endl; 
+    }
+    else {
       b(it->first) = it->second;
+      std::cout << "Ordinary bc" << std::endl;
+    }
   }
 
   // Neumann BC

@@ -11,6 +11,8 @@ int main(int argc, char** argv)
     Poisson* poisson = new Poisson(mesh);
 
     cout << mesh->num_cells() << endl;
-
+    for(int i = 0; i < 10000; ++i)
+        poisson->showinstantphi();
+    
     return 0;
 }
